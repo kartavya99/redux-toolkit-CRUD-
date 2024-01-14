@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAsync } from "./productsSlice";
-// import styles from "./Products.module.css";
+import { addAsyncItem } from "../cart/cartSlice";
+
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
@@ -14,8 +14,7 @@ import {
   Divider,
   ButtonGroup,
   Button,
-  Grid,
-  GridItem,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 export function Product() {
@@ -28,13 +27,13 @@ export function Product() {
 
   return (
     <>
-      <Grid templateColumns="repeat(4, 1fr)" gap={2}>
-        <GridItem w="100%" h="50" gap={6} />
+      <SimpleGrid columns={4} spacingX="40px" spacingY="20px">
+        {/* <GridItem w="100%" h="50" gap={6} /> */}
         {products.map((product) => (
-          <Card maxW="sm">
+          <Card maxW="sm" key={product.id}>
             <CardBody>
               <Image
-                boxSize="150px"
+                boxSize="100px"
                 src={product.thumbnail}
                 alt={product.title}
                 borderRadius="lg"
@@ -50,14 +49,18 @@ export function Product() {
             <Divider />
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="ghost" colorScheme="blue">
+                <Button
+                  variant="ghost"
+                  colorScheme="blue"
+                  onClick={() => dispatch(addAsyncItem(product))}
+                >
                   Add to cart
                 </Button>
               </ButtonGroup>
             </CardFooter>
           </Card>
         ))}
-      </Grid>
+      </SimpleGrid>
     </>
   );
 }
