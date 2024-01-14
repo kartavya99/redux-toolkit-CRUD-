@@ -27,10 +27,10 @@ export function Product() {
 
   return (
     <>
-      <SimpleGrid columns={4} spacingX="40px" spacingY="20px">
+      <SimpleGrid columns={4} spacingX="40px" spacingY="20px" m={4} p={4}>
         {/* <GridItem w="100%" h="50" gap={6} /> */}
         {products.map((product) => (
-          <Card maxW="sm" key={product.id}>
+          <Card maxW="sm" key={product.id} bg="#bcdcf7">
             <CardBody>
               <Image
                 boxSize="100px"
@@ -41,15 +41,16 @@ export function Product() {
               <Stack mt="6" spacing="3">
                 <Heading size="md">{product.title}</Heading>
                 <Text>{product.description}</Text>
-                <Text color="blue.600" fontSize="2xl">
-                  ${product.price}
+                <Text color="black.900" fontSize="2xl">
+                  $ {product.price}
                 </Text>
               </Stack>
             </CardBody>
             <Divider />
-            <CardFooter>
+            <CardFooter bg="#4788bf">
               <ButtonGroup spacing="2">
                 <Button
+                  bg="#edeff2"
                   variant="ghost"
                   colorScheme="blue"
                   onClick={() => dispatch(addAsyncItem(product))}

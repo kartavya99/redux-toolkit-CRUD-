@@ -19,18 +19,19 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
-        <Heading as="h1" size="4xl" noOfLines={1}>
-          Home Page{" "}
-          <Button
-            direction="row"
-            spacing={4}
-            align="center"
-            colorScheme="twitter"
-            onClick={() => setShowCart(!showCart)}
-          >
-            Show Cart [{items.length}]
-          </Button>
+        <Heading as="h1" size="4xl" noOfLines={1} m={4} color="black.400">
+          Add To Cart Functionality
         </Heading>
+        <Button
+          direction="row"
+          spacing={4}
+          align="center"
+          colorScheme="twitter"
+          m={10}
+          onClick={() => setShowCart(!showCart)}
+        >
+          Show Cart [{items.length}]
+        </Button>
 
         {showCart ? <Cart /> : <Product />}
       </div>
